@@ -373,7 +373,7 @@ let testingObj = 'pais'
 testObj[testingObj] = 'España'
 console.log(testObj)
 
-testObj.luckyNumbers = [5,7,23]
+testObj.luckyNumbers = [5, 7, 23]
 testObj.contact = {
   name: 'lola',
   phone: '+34 6666666669',
@@ -385,11 +385,11 @@ testObj.contact = {
 
 console.log(testObj)
 console.log(testObj.luckyNumbers[2]) //23
-testObj.luckyNumbers[2]=3
+testObj.luckyNumbers[2] = 3
 
 console.log(testObj.luckyNumbers[2]) //3
 testObj.luckyNumbers.pop()
-console.log(testObj.luckyNumbers) 
+console.log(testObj.luckyNumbers)
 
 console.log(testObj.contact.name) // lola
 console.log(testObj.contact.schedule.morning) // 9-13
@@ -437,7 +437,7 @@ EL CONSOLE LOG, ES O EN LA FUNCION O EN EL LLAMADO A LA FUNCION
 
 
 const sumV1 = () => {
-  let total = 2+3
+  let total = 2 + 3
   return total
 }
 console.log(sumV1())
@@ -452,7 +452,7 @@ console.log(sayHi())
 
 
 const sumV2 = (num) => {
-  let total = num+num
+  let total = num + num
   return total
 }
 console.log(sumV2(80))
@@ -468,10 +468,10 @@ console.log(sayHiV2('Lola'))
 
 const sumV3 = (num1, num2) => {
   console.log('num1 -> ', num1, 'num2 -> ', num2)
-  let total = num1+num2
+  let total = num1 + num2
   return total
 }
-console.log(sumV3(5,4))
+console.log(sumV3(5, 4))
 
 
 const sayHiV3 = (name, lastname) => {
@@ -481,10 +481,192 @@ const sayHiV3 = (name, lastname) => {
 
 console.log(sayHiV3('Lola', 'Paredes'))
 
-const sumV4 = (num1, num2) => num1+num2
+const sumV4 = (num1, num2) => num1 + num2
 
-console.log(sumV4(5,4))
+console.log(sumV4(5, 4))
 
 const sayHiV4 = (name, lastname) => `Hola ${name} ${lastname}!`
 
 console.log(sayHiV4('Lola', 'Paredes'))
+
+
+
+// funciones
+//declarando la funcion
+const nombreFuncion = (params) => {
+  //bloque de codigo
+  return true
+}
+//declarando funcion
+const ex1 = () => {
+  return 'hola, no recibo parametros'
+}
+
+//ejecutar funcion
+ex1()
+
+//llamar una funcion dentro de un console.log
+console.log(ex1);
+
+//ejecutar una funcion dentro de un console.log
+console.log(ex1());
+
+const ex2 = nombre => {
+  return `${nombre} he recibido el nombre: ${nombre}` // cuando se usan las comillas `` se pueden insertar variables js dentro de ${}
+  //return nombre + ' he recibido el nombre: ' + nombre
+}
+
+const arre = [1, 2, 3, 87,654,1,8,327,3,84,6,96]
+console.log(`${arre}`)
+console.log(`${Math.random()}`);
+console.log(`${Math.floor(Math.random() * 5) > 2 ? 'es mayor' : 'es menor'}`);
+
+if (Math.floor(Math.random() * 5) > 2) {
+  console.log('es mayor')
+} else {
+  console.log('es menor');
+}
+
+// ternarias
+// condicion ? true : false
+
+console.log(ex2('pepe'));
+
+const ex3 = (num1, num2) => {
+  return num1 + num2
+}
+
+console.log(ex3(5, 5))
+
+
+// higher order functions
+
+// forEach 
+
+/*
+- es un loop
+- no retorna informacion
+*/
+
+//const arre = [1, 2, 3, 87,654,1,8,327,3,84,6,96]
+
+const elevarAlCuadradoV1 = num => console.log(num*num)
+
+const elevarAlCuadradoV2 = num => num*num
+
+arre.forEach(elevarAlCuadradoV1)
+arre.forEach((num, i)=>console.log(num*num, 'el indice es ' + i ))
+
+for (let num of arre) {
+  console.log(num*num)
+}
+//arre.forEach(num=> console.log(elevarAlCuadradoV2(num)))
+
+//console.log(arre.forEach((num)=>console.log(num*num))) // indefinido porque el forEach NO RETORNA informacion
+
+
+console.log(arre);
+let arrayPotenciado = []
+arrayPotenciado = arre.forEach((num, i)=>num*num)
+console.log('arrayPotenciado despes del forEach', arrayPotenciado)
+
+
+let aux = []
+
+let testa = arre.forEach(el=> {
+  aux.push('pepe')
+})
+
+const sayHii = () => console.log('hola')
+
+arre.forEach(el=> {
+  if (el%2==0) {
+    sayHii()
+  }
+})
+
+for (let el of arre) {
+  if (el%2==0) {
+    sayHii()
+  }
+}
+
+
+let testb = arre.map(el=> {
+  return 'pepe'
+})
+console.log('testaaaaaaaaaaaaaaa', testa, aux)
+console.log('testbbbbbbbbbbbbbbb', testb)
+// map
+/*
+- es un loop
+- SI retorna informacion
+*/
+arrayPotenciado = arre.map(elevarAlCuadradoV2)
+
+const arreConH = arre.map((num) => {
+  return num+'h'
+})
+
+console.log('arrayPotenciado despues del map', arrayPotenciado)
+console.log(arreConH);
+
+
+/*
+
+//forEach                      vs                 map
+  no retorna                                      retorna un nuevo array
+              puede modificar variables fuera de su scope
+  no se puede almacenar en una variable           se puede almacenar en una variable la nueva version del array
+  es un loop y punto.                             es un loop que retorna un nuevo array
+*/
+
+
+// filter
+// se usa con condiciones 
+// devuelve un nuevo array con los elementos que cumplen la condicion
+
+const even = arre.filter(el=>el%2==0)
+
+let evenB = []
+for (let val of arre) {
+  if (val%2==0){
+    evenB.push(val)
+  }
+}
+
+const odd = arre.filter((el, index)=>{
+return el%2!=0 && index>3
+})
+
+const greaterThanTen = num=> num>10
+
+const arrayGreeaterThanTen = arre.filter(greaterThanTen)
+
+console.log(even)
+console.log(odd)
+console.log(arrayGreeaterThanTen)
+
+//reduce 
+// devuelve informacion
+
+/*
+
+const valorIniocial = 0;
+arre.reduce((acc, val)=>acc+val, valorInicial);
+*/
+
+const totalArreA = arre.reduce((acc, val) => acc+val, 0)
+console.log(totalArreA)
+//si hay una condicion que hace que el primer valor no se use, se va a usar igualmente como princpio de valor inicial
+const totalArreB = arre.reduce((acc, val) => acc+val)
+console.log(totalArreB)
+
+const arry = ['hola ', 'me ', 'llamo ', 'Larry.']
+const noSeUsaNormalmenteParaEsto = arry.reduce((acc, val) => acc+val)
+console.log(noSeUsaNormalmenteParaEsto)
+
+
+const locuraTotal = arre.map(elevarAlCuadradoV2).filter(el=> el<100).map(el=>`resultado -> ` + el)
+
+console.log(locuraTotal)
